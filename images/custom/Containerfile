@@ -128,6 +128,10 @@ COPY --from=builder --chown=frappe:frappe /home/frappe/frappe-bench /home/frappe
 
 WORKDIR /home/frappe/frappe-bench
 
+RUN sed -i 's@frappe.flags.integration_request = s.request(method, url, data=data, auth=auth, headers=headers)@frappe.flags.integration_request = s.request(method, url, data=data, auth=auth, headers=headers, proxies={"http": "http://172.16.102.152:8080", "https": "http://172.16.102.152:8080"})@g' /home/frappe/frappe-bench/apps/frappe/frappe/integrations/utils.py
+
+RUN sed -i 's@response = requests.request(method, \*\*request_args)@response=requests.request(method,\*\*request_args, proxies={"http": "http://172.16.102.152:8080", "https": "http://172.16.102.152:8080"},verify=False)@g' /home/frappe/frappe-bench/apps/india-compliance/india_compliance/gst_india/api_classes/base.py
+
 VOLUME [ \
   "/home/frappe/frappe-bench/sites", \
   "/home/frappe/frappe-bench/sites/assets", \
