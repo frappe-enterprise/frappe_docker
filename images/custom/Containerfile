@@ -17,7 +17,7 @@ RUN useradd -ms /bin/bash frappe \
     vim \
     less \
     nginx \
-    ping \
+    iputils-ping \
     telnet \
     gettext-base \
     # weasyprint dependencies
