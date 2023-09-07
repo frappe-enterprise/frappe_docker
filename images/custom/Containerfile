@@ -1,5 +1,5 @@
 ARG PYTHON_VERSION=3.11.4
-FROM python:${PYTHON_VERSION}-slim-bullseye AS base
+FROM python:${PYTHON_VERSION}-slim-bookworm AS base
 
 COPY resources/nginx-template.conf /templates/nginx/frappe.conf.template
 COPY resources/nginx-entrypoint.sh /usr/local/bin/nginx-entrypoint.sh
