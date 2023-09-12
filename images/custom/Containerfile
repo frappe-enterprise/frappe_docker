@@ -20,7 +20,6 @@ RUN useradd -ms /bin/bash frappe \
     iputils-ping \
     telnet \
     gettext-base \
-    libssl \
     # weasyprint dependencies
     libpango-1.0-0 \
     libharfbuzz0b \
